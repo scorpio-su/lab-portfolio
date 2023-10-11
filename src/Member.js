@@ -316,19 +316,19 @@ function Master() {
     {
       id: 3,
       name: "陳星佑",
-      email: "123",
+      email: "10723111@cycu.org.tw",
       path: require("./img/logo.png"),
     },
     {
       id: 4,
       name: "毛光偉",
-      email: "123",
+      email: "p0966822949@gmail.com",
       path: require("./img/logo.png"),
     },
     {
       id: 5,
       name: "陳冠綦",
-      email: "123",
+      email: "ck910829@gmail.com",
       path: require("./img/logo.png"),
     },
   ];
