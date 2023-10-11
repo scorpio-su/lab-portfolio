@@ -1,6 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -13,7 +13,7 @@ function Home() {
           And an even wittier subheading to boot. Jumpstart your marketing
           efforts with this example based on Apple’s marketing pages.
         </p>
-        <a class="btn btn-outline-secondary" href="#">
+        <a class="btn btn-outline-secondary" href="https://www.google.com">
           Coming soon
         </a>
       </div>

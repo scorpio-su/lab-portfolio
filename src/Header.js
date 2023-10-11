@@ -20,8 +20,8 @@ function Header() {
             stroke-linejoin="round"
             stroke-width="2"
             class="d-block mx-auto"
-            role="img"
             viewBox="0 0 24 24"
+            alt="google"
           />
           <title>614-lab</title>{" "}
         </a>

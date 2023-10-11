@@ -51,76 +51,76 @@ function PortfolioItem(props) {
   );
 }
 
-function PortfolioModal(props) {
-  const { project } = props;
+// function PortfolioModal(props) {
+//   const { project } = props;
 
-  return (
-    <div
-      class="portfolio-modal modal fade"
-      id="portfolioModal1"
-      tabindex="-1"
-      role="dialog"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="close-modal" data-bs-dismiss="modal">
-            <img src="assets/img/close-icon.svg" alt="Close modal" />
-          </div>
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8">
-                <div class="modal-body">
-                  <h2 class="text-uppercase">{project.name}</h2>
-                  <p class="item-intro text-muted">{project.description}</p>
-                  <img
-                    class="img-fluid d-block mx-auto"
-                    src={project.imgSrc}
-                    alt={project.title}
-                  />
-                  <p>{project.details}</p>
-                  <ul class="list-inline">
-                    <li>
-                      <strong>Client:</strong>
-                      {project.client}
-                    </li>
-                    <li>
-                      <strong>Category:</strong>
-                      {project.category}
-                    </li>
-                  </ul>
-                  <button
-                    class="btn btn-primary btn-xl text-uppercase"
-                    data-bs-dismiss="modal"
-                    type="button"
-                  >
-                    <svg
-                      class="svg-inline--fa fa-xmark me-1"
-                      aria-hidden="true"
-                      focusable="false"
-                      data-prefix="fas"
-                      data-icon="xmark"
-                      role="img"
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 320 512"
-                      data-fa-i2svg=""
-                    >
-                      <path
-                        fill="currentColor"
-                        d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
-                      ></path>
-                    </svg>
-                    Close Project
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
+//   return (
+//     <div
+//       class="portfolio-modal modal fade"
+//       id="portfolioModal1"
+//       tabindex="-1"
+//       role="dialog"
+//       aria-hidden="true"
+//     >
+//       <div class="modal-dialog">
+//         <div class="modal-content">
+//           <div class="close-modal" data-bs-dismiss="modal">
+//             <img src="assets/img/close-icon.svg" alt="Close modal" />
+//           </div>
+//           <div class="container">
+//             <div class="row justify-content-center">
+//               <div class="col-lg-8">
+//                 <div class="modal-body">
+//                   <h2 class="text-uppercase">{project.name}</h2>
+//                   <p class="item-intro text-muted">{project.description}</p>
+//                   <img
+//                     class="img-fluid d-block mx-auto"
+//                     src={project.imgSrc}
+//                     alt={project.title}
+//                   />
+//                   <p>{project.details}</p>
+//                   <ul class="list-inline">
+//                     <li>
+//                       <strong>Client:</strong>
+//                       {project.client}
+//                     </li>
+//                     <li>
+//                       <strong>Category:</strong>
+//                       {project.category}
+//                     </li>
+//                   </ul>
+//                   <button
+//                     class="btn btn-primary btn-xl text-uppercase"
+//                     data-bs-dismiss="modal"
+//                     type="button"
+//                   >
+//                     <svg
+//                       class="svg-inline--fa fa-xmark me-1"
+//                       aria-hidden="true"
+//                       focusable="false"
+//                       data-prefix="fas"
+//                       data-icon="xmark"
+//                       role="img"
+//                       xmlns="http://www.w3.org/2000/svg"
+//                       viewBox="0 0 320 512"
+//                       data-fa-i2svg=""
+//                     >
+//                       <path
+//                         fill="currentColor"
+//                         d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+//                       ></path>
+//                     </svg>
+//                     Close Project
+//                   </button>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
 function Project() {
   const datas = [
