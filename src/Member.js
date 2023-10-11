@@ -319,6 +319,18 @@ function Master() {
       email: "123",
       path: require("./img/logo.png"),
     },
+    {
+      id: 4,
+      name: "毛光偉",
+      email: "123",
+      path: require("./img/logo.png"),
+    },
+    {
+      id: 5,
+      name: "陳冠綦",
+      email: "123",
+      path: require("./img/logo.png"),
+    },
   ];
   return (
     <div>
