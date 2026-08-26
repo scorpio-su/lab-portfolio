@@ -16,8 +16,6 @@ COPY . .
 #     npm install
 RUN npm install
 
-Volume [ "./" ]
-
 EXPOSE 3000
 
-CMD [ "node", "start" ]
+CMD [ "npm", "start" ]
