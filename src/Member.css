@@ -1,26 +1,25 @@
-.team-member img {
-  width: 14rem;
-  height: 14rem;
-  border: 0.5rem solid rgba(0, 0, 0, 0.1);
+.team-member img,
+.member-photo {
+  width: 8rem;
+  height: 8rem;
+  object-fit: cover;
 }
+
 .rounded-circle {
   border-radius: 50% !important;
 }
+
 .mx-auto {
   margin-right: auto !important;
   margin-left: auto !important;
 }
+
 img,
 svg {
   vertical-align: middle;
 }
+
 .team-member {
   margin-bottom: 3rem;
   text-align: center;
-}
-.svg-inline--fa {
-  display: var(--fa-display, inline-block);
-  height: 1em;
-  overflow: visible;
-  vertical-align: -0.125em;
 }

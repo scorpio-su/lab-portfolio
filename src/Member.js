@@ -1,23 +1,9 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Member.css";
-
-function List({ listItems, type }) {
-  const ListTag = type === "ol" ? "ol" : "ul";
-
-  return (
-    <ListTag>
-      {listItems.map((item) => (
-        <li key={item.id} style={{ "text-align": "left" }}>
-          <p class="fw-bolder">
-            {item.title}
-            <p class="fw-normal">{item.content}</p>
-          </p>
-        </li>
-      ))}
-    </ListTag>
-  );
-}
+import { useLang } from "./LanguageContext";
+import { content, t } from "./i18n/content";
+import EnglishNotice from "./i18n/EnglishNotice";
 
 // // original people function
 // function People(props) {
@@ -157,35 +143,14 @@ function Person(props) {
   const { name, email, path } = props;
 
   return (
-    <div className="team-member">
-      <img className="mx-auto rounded-circle" src={path} alt={name} />
+    <article class="member-card">
+      <img class="member-photo" src={path} alt={name} />
       <h4>{name}</h4>
-      <p className="text-center">
-        <a
-          className="btn btn-dark btn-social mx-2 rounded-circle"
-          href={`mailto:${email}`}
-          aria-label="Larry Parker Facebook Profile"
-        >
-          <svg
-            className="svg-inline--fa fa-facebook-f"
-            aria-hidden="true"
-            focusable="false"
-            data-prefix="fab"
-            data-icon="facebook-f"
-            role="img"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-            data-fa-i2svg=""
-          >
-            <path
-              fill="currentColor"
-              d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"
-            />
-          </svg>
-        </a>
+      <a class="member-mail" href={`mailto:${email}`} aria-label={`${name} email`}>
+        <i class="bi bi-envelope me-2" aria-hidden="true"></i>
         {email}
-      </p>
-    </div>
+      </a>
+    </article>
   );
 }
 
@@ -193,9 +158,9 @@ function Person(props) {
 //   const { datas, className } = props;
 
 //   return (
-//     <div className={`row ${className}`}>
+//     <div class={`row ${className}`}>
 //       {datas.map((data) => (
-//         <div className="col" key={data.id}>
+//         <div class="col" key={data.id}>
 //           <Person {...data} />
 //         </div>
 //       ))}
@@ -208,11 +173,11 @@ function Peoplev3(props) {
 
   const renderFirstPerson = (data) => {
     return (
-      <div class="row">
-        <div className="col-lg-6">
+      <div class="row g-4">
+        <div class="col-lg-6">
           <Person {...data} />
         </div>
-        <div className="col-lg-6">
+        <div class="col-lg-6">
           <Introdution />
         </div>
       </div>
@@ -224,9 +189,9 @@ function Peoplev3(props) {
   };
 
   return (
-    <div className="row">
+    <div class="row g-4">
       {datas.map((data) => (
-        <div className={data.id === 0 ? "" : ways}>
+        <div class={data.id === 0 ? "" : ways} key={data.id}>
           {data.id === 0 ? renderFirstPerson(data) : renderPerson(data)}
         </div>
       ))}
@@ -255,7 +220,26 @@ function Introdution() {
       content: "先進數位智能製造研究室 / 工學614 / 03-2654340",
     },
   ];
-  return <List listItems={intro} type="ul" />;
+  return (
+    <aside class="lab-card">
+      {intro.map((item) => (
+        <div key={item.index} class="mb-3">
+          <p class="intro-kicker mb-1">{item.title}</p>
+          {item.index === 2 ? (
+            <div class="tag-row">
+              {item.content.split("、").map((tag) => (
+                <span class="tag-chip" key={tag}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <p class="mb-0">{item.content}</p>
+          )}
+        </div>
+      ))}
+    </aside>
+  );
 }
 
 function Professor() {
@@ -341,8 +325,13 @@ function Master() {
 }
 
 function Member() {
+  const { lang } = useLang();
   return (
-    <div class="container">
+    <div class="page-shell container">
+      <header class="page-hero">
+        <h1>{t(content.member.title, lang)}</h1>
+      </header>
+      <EnglishNotice />
       <div class="text-center p-3">
         <h2 class="section-heading">Professor</h2>
       </div>

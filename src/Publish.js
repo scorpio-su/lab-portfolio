@@ -1,26 +1,37 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import { useLang } from "./LanguageContext";
+import { content, t } from "./i18n/content";
+import EnglishNotice from "./i18n/EnglishNotice";
+
+function yearFrom(item) {
+  const match = item.match(/\b(20\d{2})\b/);
+  return match ? match[1] : "";
+}
 
 function List(props) {
   const { items, type, status } = props;
 
   const listItems = items.map((item, index) => (
-    <li key={index}>
-      {item}
-      <p class="fw-bolder">{status}</p>
+    <li class="publish-card" key={index}>
+      <div class="tag-row mb-2">
+        {yearFrom(item) ? (
+          <span class="tag-chip publish-meta">{yearFrom(item)}</span>
+        ) : null}
+        {status ? <span class="tag-chip">{status}</span> : null}
+      </div>
+      <p class="mb-0">{item}</p>
     </li>
   ));
 
-  const list = type === "ol" ? <ol>{listItems}</ol> : <ul>{listItems}</ul>;
+  const list =
+    type === "ol" ? (
+      <ol class="list-unstyled d-flex flex-column gap-3 mb-0">{listItems}</ol>
+    ) : (
+      <ul class="list-unstyled d-flex flex-column gap-3 mb-0">{listItems}</ul>
+    );
 
-  return (
-    <div
-      class="fw-normal"
-      style={{ "text-align": "left", wordWrap: "break-word" }}
-    >
-      {list}
-    </div>
-  );
+  return <div class="fw-normal">{list}</div>;
 }
 
 function Periodicals() {
@@ -34,11 +45,10 @@ function Periodicals() {
     "Shih-Ming Wang; Chun-Yi Lee; Hariyanto Gunawan; Chin-Cheng Yeh, “An Accuracy-Efficiency-Power Consumption Hybrid Optimization Method for CNC Mlliing Process”, 2019, Applied Sciences, vol.9, p.1495-1-1495-20.",
   ];
   return (
-    <div class="p-4">
-      <h2 class="blog-post-title mb-1">期刊論文</h2>
-      <hr />
+    <section>
+      <h2 class="section-heading">期刊論文</h2>
       <List items={items} type="ol" status="(SCI期刊)" />
-    </div>
+    </section>
   );
 }
 
@@ -52,24 +62,23 @@ function Seminar() {
     "Shih-Ming Wang; Zhe-Zhi Ye; Hariyanto Gunawan , “Accuracy Analysis of the Micro Machine Tool with Co-Planar Driving Mechanism” , 2020 , ASME 2020 15th International Manufacturing Science and Engineering Conference, MSEC 2020 , 2020 /9 /3 ~ 2020 /9 /3 , United States .",
   ];
   return (
-    <div class="p-4">
-      <h2 class="blog-post-title mb-1 py-3">研討會論文</h2>
-      <hr />
+    <section class="mt-5">
+      <h2 class="section-heading">研討會論文</h2>
       <List items={items} type="ul" />
-    </div>
+    </section>
   );
 }
 
 function Publish() {
+  const { lang } = useLang();
   return (
-    <div class="row g-5">
-      <div class="col-md-12">
-        <article class="blog-post">
-          <Periodicals />
-          <hr />
-          <Seminar />
-        </article>
-      </div>
+    <div class="page-shell container">
+      <header class="page-hero">
+        <h1>{t(content.publish.title, lang)}</h1>
+      </header>
+      <EnglishNotice />
+      <Periodicals />
+      <Seminar />
     </div>
   );
 }

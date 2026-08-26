@@ -1,48 +1,51 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import { useLang } from "./LanguageContext";
+import { content, t } from "./i18n/content";
+import EnglishNotice from "./i18n/EnglishNotice";
 
 function Box(props) {
-  const { name, content } = props;
+  const { name, content: body } = props;
   return (
-    <div class="bg-light me-md-3 pt-3 px-1 pt-md-3 px-md-3 text-center overflow-hidden">
-      <div class="my-1 p-1">
-        <h2 class="display-5">{name}</h2>
-        <p class="lead">{content}</p>
+    <article class="photo-card">
+      <div class="photo-placeholder" aria-hidden="true">
+        <i class="bi bi-image"></i>
       </div>
-      <div
-        class="bg-body shadow-sm mx-auto"
-        style={{
-          width: "100%",
-          height: "250px",
-          "border-radius": "2px 2px 0 0",
-        }}
-      ></div>
-    </div>
+      <h2 class="h5">{name}</h2>
+      <p class="mb-0 theme-muted">{body}</p>
+    </article>
   );
 }
 
 function ContainerWithBox({ props }) {
   return (
-    <div class="container">
-      <div class="row">
-        {props.map((data) => (
-          <div key={data.index} class="col-md-4">
-            <Box name={data.name} content={data.content} />
-          </div>
-        ))}
-      </div>
+    <div class="row g-4">
+      {props.map((data) => (
+        <div key={data.index} class="col-md-4">
+          <Box name={data.name} content={data.content} />
+        </div>
+      ))}
     </div>
   );
 }
 
 function Photo() {
+  const { lang } = useLang();
   const datas = [
     { index: 1, name: "123", content: "123" },
     { index: 2, name: "124", content: "124" },
     { index: 3, name: "124", content: "124" },
     { index: 4, name: "124", content: "124" },
   ];
-  return <ContainerWithBox props={datas} />;
+  return (
+    <div class="page-shell container">
+      <header class="page-hero">
+        <h1>{t(content.photo.title, lang)}</h1>
+      </header>
+      <EnglishNotice />
+      <ContainerWithBox props={datas} />
+    </div>
+  );
 }
 
 export default Photo;
