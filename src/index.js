@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import './index.css';
 import App from './App';
+import { ThemeProvider } from './ThemeContext';
+import { LanguageProvider } from './LanguageContext';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeProvider>
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
 

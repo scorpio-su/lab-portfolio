@@ -1,13 +1,93 @@
+:root {
+  --bg-page: #f4faf8;
+  --bg-surface: #ffffff;
+  --bg-soft: #eaf7f4;
+  --text-primary: #1c2a3a;
+  --text-secondary: #5a6b7d;
+  --border-soft: #d7ebe6;
+  --accent-purple: #7c5cff;
+  --accent-teal: #12b8b4;
+  --accent-pink: #ff5d9e;
+  --accent-blue: #3d8bff;
+  --accent-gradient: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-teal) 100%);
+  --radius-card: 1rem;
+  --shadow-card: 0 0.75rem 1.75rem rgba(28, 90, 86, 0.08);
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --font-sans: "Segoe UI", "PingFang TC", "Microsoft JhengHei", "Noto Sans TC",
+    sans-serif;
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --on-accent: #ffffff;
+  --glow-purple: rgba(124, 92, 255, 0.1);
+  --glow-teal: rgba(18, 184, 180, 0.12);
+  --glow-pink: rgba(255, 93, 158, 0.08);
+  --chip-purple-fg: var(--accent-purple);
+  --chip-purple-bg: #f3efff;
+  --chip-purple-border: #e4dbff;
+  --chip-teal-fg: #0e7f7c;
+  --chip-teal-bg: #e7f8f7;
+  --chip-teal-border: #c6efed;
+  --chip-pink-fg: #c43a74;
+  --chip-pink-bg: #ffe9f3;
+  --chip-pink-border: #ffd0e4;
+  --color-scheme: light;
+
+  /* Dark token aliases — values applied via [data-theme="dark"] */
+  --dark-bg-page: #0d1117;
+  --dark-bg-surface: #161b22;
+  --dark-text-primary: #e6edf3;
+  --dark-text-secondary: #c9d1d9;
+  --dark-border-soft: #30363d;
+}
+
+[data-theme="dark"] {
+  --bg-page: var(--dark-bg-page);
+  --bg-surface: var(--dark-bg-surface);
+  --bg-soft: #1c2330;
+  --text-primary: var(--dark-text-primary);
+  --text-secondary: var(--dark-text-secondary);
+  --border-soft: var(--dark-border-soft);
+  --accent-purple: #a78bfa;
+  --accent-teal: #2dd4bf;
+  --accent-pink: #ff7ab6;
+  --accent-blue: #62a0ff;
+  --shadow-card: 0 0.75rem 1.75rem rgba(0, 0, 0, 0.38);
+  --header-bg: rgba(13, 17, 23, 0.88);
+  --glow-purple: rgba(167, 139, 250, 0.2);
+  --glow-teal: rgba(45, 212, 191, 0.16);
+  --glow-pink: rgba(255, 122, 182, 0.14);
+  --chip-purple-fg: #d4c6ff;
+  --chip-purple-bg: #2a2150;
+  --chip-purple-border: #5b4a9a;
+  --chip-teal-fg: #7ee8dc;
+  --chip-teal-bg: #143834;
+  --chip-teal-border: #2a6b64;
+  --chip-pink-fg: #ffb1d2;
+  --chip-pink-bg: #3a1c2d;
+  --chip-pink-border: #7a3a58;
+  --color-scheme: dark;
+}
+
+html {
+  color-scheme: var(--color-scheme);
+  background: var(--bg-page);
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-sans);
+  background: var(--bg-page);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

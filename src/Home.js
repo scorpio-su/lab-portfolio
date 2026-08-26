@@ -1,38 +1,52 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import { useLang } from "./LanguageContext";
+import { content, t } from "./i18n/content";
 // import { Link } from "react-router-dom";
 
 function Home() {
+  const { lang } = useLang();
+
   return (
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
-        <h1 class="display-4 fw-normal">
-          Data collection is under construction
-        </h1>
-        <p class="lead fw-normal">
-          And an even wittier subheading to boot. Jumpstart your marketing
-          efforts with this example based on Apple’s marketing pages.
-        </p>
-        <a class="btn btn-outline-secondary" href="https://www.google.com">
-          Coming soon
-        </a>
+    <div class="page-shell container">
+      <header class="page-hero">
+        <p class="page-kicker">{t(content.home.kicker, lang)}</p>
+        <h1>{t(content.home.title, lang)}</h1>
+      </header>
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <article class="lab-card">
+            <i class="bi bi-cpu icon-burst" aria-hidden="true"></i>
+            <h2>{t(content.home.introTitle, lang)}</h2>
+            <p>{t(content.home.introBody, lang)}</p>
+          </article>
+        </div>
+        <div class="col-lg-5">
+          <article class="lab-card">
+            <i class="bi bi-person-badge icon-burst" aria-hidden="true"></i>
+            <h2>{t(content.home.piTitle, lang)}</h2>
+            <p>
+              <strong>{t(content.home.degreeLabel, lang)}</strong>
+              <br />
+              {t(content.home.degreeValue, lang)}
+            </p>
+            <p>
+              <strong>{t(content.home.labLabel, lang)}</strong>
+              <br />
+              {t(content.home.labValue, lang)}
+            </p>
+            <p class="intro-kicker">{t(content.home.expertiseLabel, lang)}</p>
+            <div class="tag-row">
+              {content.home.expertise.map((tag) => (
+                <span class="tag-chip" key={tag.en}>
+                  {t(tag, lang)}
+                </span>
+              ))}
+            </div>
+          </article>
+        </div>
       </div>
-      <div class="product-device shadow-sm d-none d-md-block"></div>
-      <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
     </div>
-    //   {/*
-    //   <div class="d-md-flex flex-md-equal w-100 my-md-4 ps-md-4">
-    //     <div class="bg-light me-md-4 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-    //       <div class="my-3 p-3">
-    //         <h2 class="display-5">Another headline</h2>
-    //         <p class="lead">And an even wittier subheading.</p>
-    //       </div>
-    //       <div
-    //         class="bg-body shadow-sm mx-auto"
-    //         style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"
-    //       ></div>
-    //     </div>
-    //   </div> */}
   );
 }
 

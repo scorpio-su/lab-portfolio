@@ -1,50 +1,22 @@
 import React from "react";
 import "./Project.css";
 import "bootstrap/dist/css/bootstrap.css";
+import { useLang } from "./LanguageContext";
+import { content, t } from "./i18n/content";
+import EnglishNotice from "./i18n/EnglishNotice";
 
 function PortfolioItem(props) {
   const { datas } = props;
 
   return (
-    <div class="row">
+    <div class="row g-4">
       {datas.map((data) => (
-        <div className="col-lg-4 col-sm-6 mb-4">
-          <div className="portfolio-item">
-            <a
-              className="portfolio-link"
-              data-bs-toggle="modal"
-              href="#portfolioModal3"
-            >
-              <div className="portfolio-hover">
-                <div className="portfolio-hover-content">
-                  <svg
-                    className="svg-inline--fa fa-plus fa-3x"
-                    aria-hidden="true"
-                    focusable="false"
-                    data-prefix="fas"
-                    data-icon="plus"
-                    role="img"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 448 512"
-                    data-fa-i2svg=""
-                  >
-                    <path
-                      fill="currentColor"
-                      d="M432 256c0 17.69-14.33 32.01-32 32.01H256v144c0 17.69-14.33 31.99-32 31.99s-32-14.3-32-31.99v-144H48c-17.67 0-32-14.32-32-32.01s14.33-31.99 32-31.99H192v-144c0-17.69 14.33-32.01 32-32.01s32 14.32 32 32.01v144h144C417.7 224 432 238.3 432 256z"
-                    ></path>
-                  </svg>
-                  {/* <i className="fas fa-plus fa-3x"></i> Font Awesome fontawesome.com */}
-                </div>
-              </div>
-              <img className="img-fluid" src={data.imgSrc} alt="..." />
-            </a>
-            <div className="portfolio-caption">
-              <div className="portfolio-caption-heading">{data.title}</div>
-              <div className="portfolio-caption-subheading text-muted">
-                {data.subtitle}
-              </div>
-            </div>
-          </div>
+        <div class="col-lg-4 col-sm-6" key={data.index}>
+          <article class="project-card">
+            <img class="img-fluid rounded mb-3" src={data.imgSrc} alt={data.title} />
+            <h3 class="h5 mb-1">{data.title}</h3>
+            <p class="mb-0 theme-muted">{data.subtitle}</p>
+          </article>
         </div>
       ))}
     </div>
@@ -123,6 +95,7 @@ function PortfolioItem(props) {
 // }
 
 function Project() {
+  const { lang } = useLang();
   const datas = [
     {
       index: 1,
@@ -132,13 +105,14 @@ function Project() {
     },
   ];
   return (
-    <div className="container">
-      <div className="text-center p-3">
-        <h2 className="section-heading text-uppercase">研究方向</h2>
-        <h3 className="section-subheading text-muted">
+    <div class="page-shell container">
+      <header class="page-hero">
+        <h1 class="section-heading">{t(content.project.title, lang)}</h1>
+        <p class="page-hero-sub">
           Lorem ipsum dolor sit amet consectetur.
-        </h3>
-      </div>
+        </p>
+      </header>
+      <EnglishNotice />
       <PortfolioItem datas={datas} />
       {/* {datas.map((project) => (
         <PortfolioModal project={project} />
@@ -161,7 +135,7 @@ function Project() {
                   <div class="modal-body">
                     {/* Project details */}
                     <h2 class="text-uppercase">Project Name</h2>
-                    <p class="item-intro text-muted">
+                    <p class="item-intro theme-muted">
                       Lorem ipsum dolor sit amet consectetur.
                     </p>
                     <img class="img-fluid d-block mx-auto" src="" alt="..." />

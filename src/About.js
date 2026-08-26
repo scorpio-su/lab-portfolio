@@ -1,35 +1,38 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
+import { useLang } from "./LanguageContext";
+import { content, t } from "./i18n/content";
 
 function List(props) {
   const { items, type } = props;
 
-  const listItems = items.map((item, index) => <li key={index}>{item}</li>);
+  const listItems = items.map((item, index) => (
+    <li class="contact-item" key={index}>
+      <i class="bi bi-dot" aria-hidden="true"></i>
+      <span>{item}</span>
+    </li>
+  ));
 
-  const list = type === "ol" ? <ol>{listItems}</ol> : <ul>{listItems}</ul>;
+  const list =
+    type === "ol" ? (
+      <ol class="list-unstyled mb-0">{listItems}</ol>
+    ) : (
+      <ul class="list-unstyled mb-0">{listItems}</ul>
+    );
 
-  return (
-    <div
-      class="fw-normal"
-      style={{ "text-align": "left", wordWrap: "break-word" }}
-    >
-      {list}
-    </div>
-  );
+  return <div class="fw-normal">{list}</div>;
 }
 
 function Map() {
+  const { lang } = useLang();
   return (
     <div class="col-md-6">
-      <div
-        class="h-100 p-5 text-bg-dark rounded-3"
-        style={{ "text-align": "left" }}
-      >
-        <h2>Google map</h2>
+      <div class="lab-card">
+        <i class="bi bi-geo-alt icon-burst" aria-hidden="true"></i>
+        <h2>{t(content.about.mapTitle, lang)}</h2>
         <iframe
+          class="map-frame"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3617.263524166201!2d121.24207061508383!3d24.95714724752174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346822143fff78e7%3A0x151567d0dbb4a0d9!2sCollege%20Of%20Engineering!5e0!3m2!1sen!2stw!4v1678670971487!5m2!1sen!2stw"
-          width="500"
-          height="450"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
@@ -40,7 +43,8 @@ function Map() {
   );
 }
 
-function Content() {
+function ContactBlock() {
+  const { lang } = useLang();
   const content_en = [
     "Advanced Digital Smart Manufacturing Lab",
     "ADDRESS: 320314 No. 200, Zhongbei Rd., Zhongli Dist., Taoyuan City",
@@ -55,24 +59,26 @@ function Content() {
 
   return (
     <div class="col-md-6">
-      <div
-        class="h-100 p-5 border rounded-3 mx-auto"
-        style={{ "text-align": "left" }}
-      >
-        <h2>聯絡我們</h2>
-        <List items={content_en} type="ul" />
-        <hr />
-        <List items={content_tw} type="ul" />
+      <div class="contact-card">
+        <i class="bi bi-chat-dots icon-burst" aria-hidden="true"></i>
+        <h2 class="lab-card-title">{t(content.about.title, lang)}</h2>
+        <List items={lang === "en" ? content_en : content_tw} type="ul" />
       </div>
     </div>
   );
 }
 
 function About() {
+  const { lang } = useLang();
   return (
-    <div class="row align-items-md-stretch my-2 mx-auto">
-      <Map />
-      <Content />
+    <div class="page-shell container">
+      <header class="page-hero">
+        <h1>{t(content.about.title, lang)}</h1>
+      </header>
+      <div class="row align-items-md-stretch g-4">
+        <Map />
+        <ContactBlock />
+      </div>
     </div>
   );
 }
